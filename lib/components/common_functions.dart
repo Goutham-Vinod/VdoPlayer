@@ -4,7 +4,7 @@
 
 searchFromStringList(String query, stringList) {
   List suggestions = stringList.where((stringElement) {
-    String findString = query.toLowerCase();
+    String findString = query.toLowerCase().trim();
     final mainString = stringElement.toString().toLowerCase();
     return mainString.contains(findString);
   }).toList();

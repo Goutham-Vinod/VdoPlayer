@@ -42,8 +42,6 @@ class ThreeDot extends StatelessWidget {
               }
               break;
             case "Playlist":
-              //debugPrint("Playlist Selected");
-              //selectedNaviBarIndexNotifierGlobal.value = 2;
               showAddToPlaylistBox(context);
               break;
             case "Delete":

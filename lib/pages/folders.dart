@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vdo_player/components/grid_list_view_widget.dart';
+import 'package:vdo_player/components/grid_list_view_folders_widget.dart';
 import 'package:vdo_player/pages/folder_videos.dart';
 import 'package:vdo_player/components/common_functions.dart';
 import 'package:vdo_player/common.dart';
@@ -23,10 +23,9 @@ class _FoldersState extends State<Folders> {
 
   @override
   Widget build(BuildContext context) {
-    return GridListViewWidget(
+    return GridListViewFoldersWidget(
       dataList: uniqueFolders,
       thumbnailImage: Image.asset("assets/folder_thumbnail_icon.png"),
-      crossAxisCount: 3,
       onTapFunction: (index) {
         Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
           return const FolderVideos();

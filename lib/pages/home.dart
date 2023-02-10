@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vdo_player/common.dart';
-import 'package:vdo_player/components/grid_list_view_widget.dart';
+import 'package:vdo_player/components/grid_list_view_videos_widget.dart';
 import 'package:vdo_player/video_preview.dart';
 
 import 'package:vdo_player/components/common_functions.dart';
@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
         valueListenable: videosGlobalNotifier,
         builder: (context, videosGlobal, child) {
           videos = findUniqueFiles(videosGlobalNotifier.value);
-          return GridListViewWidget(
+          return GridListViewVideosWidget(
             dataList: videos,
             thumbnailImage: Image.asset("assets/video_thumbnail_icon.png"),
             onTapFunction: (index) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vdo_player/components/grid_list_view_widget.dart';
+import 'package:vdo_player/components/grid_list_view_videos_widget.dart';
 import 'package:vdo_player/common.dart';
 import 'package:vdo_player/db/db_functions.dart';
 import 'package:vdo_player/video_preview.dart';
@@ -36,7 +36,7 @@ class _PlaylistVideosState extends State<PlaylistVideos> {
             builder: (context, playlistFolder, child) {
               if (playlistFolder[selectedPlaylistFolderIndex].playlist !=
                   null) {
-                return GridListViewWidget(
+                return GridListViewVideosWidget(
                   dataList:
                       playlistFolder[selectedPlaylistFolderIndex].playlist!,
                   thumbnailImage:
