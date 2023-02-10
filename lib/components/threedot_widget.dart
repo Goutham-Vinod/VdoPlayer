@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:vdo_player/common.dart';
 import 'package:vdo_player/db/db_functions.dart';
+import 'package:vdo_player/db/db_model.dart';
 import 'package:vdo_player/components/create_playlist_dialogue.dart';
 
 class ThreeDot extends StatelessWidget {
@@ -22,14 +25,14 @@ class ThreeDot extends StatelessWidget {
         size: 20,
       ),
       itemBuilder: (context) {
-        List<PopupMenuItem<String>> popupMenuItemList = const [
+        List<PopupMenuItem<String>> popupMenuItemList = [
           PopupMenuItem(value: "Favourite", child: Text("Add to Favourite")),
           PopupMenuItem(value: "Playlist", child: Text("Add to Playlist")),
           PopupMenuItem(value: "Share", child: Text("Share"))
         ];
         if (enableDelete == true) {
           popupMenuItemList
-              .add(const PopupMenuItem(value: "Delete", child: Text("Delete")));
+              .add(PopupMenuItem(value: "Delete", child: Text("Delete")));
         }
         return popupMenuItemList;
       },
@@ -42,6 +45,8 @@ class ThreeDot extends StatelessWidget {
               }
               break;
             case "Playlist":
+              //debugPrint("Playlist Selected");
+              //selectedNaviBarIndexNotifierGlobal.value = 2;
               showAddToPlaylistBox(context);
               break;
             case "Delete":
@@ -73,8 +78,8 @@ class ThreeDot extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(15.0),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
                       "Add to playlist",
                       style: TextStyle(color: Colors.white),
@@ -86,7 +91,7 @@ class ThreeDot extends StatelessWidget {
                         onPressed: () {
                           showCreatePlaylistDialog(context);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.add_box_outlined,
                           color: Colors.white,
                         )),
@@ -109,6 +114,10 @@ class ThreeDot extends StatelessWidget {
                                 if (videoPath != null) {
                                   addToPlaylist(videoPath!, i);
                                 }
+                                print("${playlistFolder[i].id} added");
+                              } else {
+                                print(
+                                    "Null detected at playlistFolderNotifier.value[i].id");
                               }
                               Navigator.pop(context);
                             },
@@ -116,11 +125,11 @@ class ThreeDot extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
+                                      borderRadius: BorderRadius.all(
                                         Radius.circular(5),
                                       ),
                                       border: Border.all(
-                                          color: const Color.fromARGB(
+                                          color: Color.fromARGB(
                                               255, 180, 68, 255))),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),

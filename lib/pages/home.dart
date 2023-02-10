@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vdo_player/common.dart';
 import 'package:vdo_player/components/grid_list_view_videos_widget.dart';
 import 'package:vdo_player/video_preview.dart';
-
 import 'package:vdo_player/components/common_functions.dart';
 
 class Home extends StatefulWidget {

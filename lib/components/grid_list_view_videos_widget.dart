@@ -32,11 +32,12 @@ class _GridListViewVideosWidgetState extends State<GridListViewVideosWidget> {
         builder: (context, gridViewState, child) {
           return gridViewState == 1
               ? Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: GridView.builder(
                       itemCount: widget.dataList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, crossAxisSpacing: 1),
+                        crossAxisCount: 2,
+                      ),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
@@ -50,43 +51,48 @@ class _GridListViewVideosWidgetState extends State<GridListViewVideosWidget> {
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 10, 0, 5),
                                   child: SizedBox(
-                                    height: 100,
                                     child: widget.thumbnailImage,
                                   )),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: 135,
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          30, 0, 0, 0),
-                                      child: Text(
-                                        truncateWithEllipsis(
-                                            25,
-                                            widget.dataList[index]
-                                                .split('/')
-                                                .last),
-                                        style: const TextStyle(fontSize: 14),
-                                        textAlign: TextAlign.left,
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * .5,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          .3,
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            30, 0, 0, 0),
+                                        child: Text(
+                                          truncateWithEllipsis(
+                                              25,
+                                              widget.dataList[index]
+                                                  .split('/')
+                                                  .last),
+                                          style: const TextStyle(fontSize: 14),
+                                          textAlign: TextAlign.left,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  widget.enableThreeDot == null
-                                      ? const Text("")
-                                      : ThreeDot(
-                                          videoPath: widget.dataList[index],
-                                          enableDelete:
-                                              widget.enableDeleteAtThreeDot,
-                                          index: index,
-                                          deleteFunction: (index) {
-                                            if (widget.deleteFunction != null) {
-                                              return widget
-                                                  .deleteFunction!(index);
-                                            }
-                                          })
-                                ],
+                                    widget.enableThreeDot == null
+                                        ? const Text("")
+                                        : ThreeDot(
+                                            videoPath: widget.dataList[index],
+                                            enableDelete:
+                                                widget.enableDeleteAtThreeDot,
+                                            index: index,
+                                            deleteFunction: (index) {
+                                              if (widget.deleteFunction !=
+                                                  null) {
+                                                return widget
+                                                    .deleteFunction!(index);
+                                              }
+                                            })
+                                  ],
+                                ),
                               )
                             ],
                           ),

@@ -109,6 +109,7 @@ class _FolderVideosState extends State<FolderVideos> {
                       }));
                     },
                     enableThreeDot: true,
+                    enableDeleteAtThreeDot: false,
                   ))
                 ],
               );

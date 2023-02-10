@@ -159,3 +159,107 @@ class _PlaylistState extends State<Playlist> {
     });
   }
 }
+
+
+
+
+// ValueListenableBuilder(
+//               valueListenable: gridViewStateNotifierGlobal,
+//               builder: (context, gridViewState, child) {
+//                 return gridViewState == 1
+//                     ? GridView.builder(
+//                         itemCount: playlistFolder.length,
+//                         gridDelegate:
+//                             const SliverGridDelegateWithFixedCrossAxisCount(
+//                                 crossAxisCount: 3, crossAxisSpacing: 1),
+//                         itemBuilder: (context, index) {
+//                           return InkWell(
+//                             onTapDown: (details) {
+//                               setState(() {
+//                                 userTapPosX = details.globalPosition.dx;
+//                                 userTapPosY = details.globalPosition.dy;
+//                               });
+//                             },
+//                             onLongPress: () {
+//                               showPopUpMenu(context, playlistFolder[index].id,
+//                                   userTapPosX, userTapPosY);
+//                             },
+//                             onTap: () {
+//                               selectedPlaylistFolderIndex = index;
+//                               Navigator.of(context)
+//                                   .push(MaterialPageRoute(builder: (ctx) {
+//                                 return const PlaylistVideos();
+//                               }));
+//                             },
+//                             child: Column(
+//                               children: [
+//                                 Padding(
+//                                   padding:
+//                                       const EdgeInsets.fromLTRB(0, 20, 0, 0),
+//                                   child: Image.asset(
+//                                     "assets/playlist_thumbnail_icon.png",
+//                                     height: 50,
+//                                   ),
+//                                 ),
+//                                 const SizedBox(
+//                                   height: 10,
+//                                 ),
+//                                 SizedBox(
+//                                   width: 67,
+//                                   child: Text(
+//                                     truncateWithEllipsis(
+//                                         25, playlistFolder[index].playlistName),
+//                                     style: const TextStyle(fontSize: 13),
+//                                     textAlign: TextAlign.center,
+//                                   ),
+//                                 )
+//                               ],
+//                             ),
+//                           );
+//                         })
+//                     : Padding(
+//                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+//                         child: ListView.separated(
+//                             key: _listKey,
+//                             itemBuilder: (context, index) {
+//                               return InkWell(
+//                                 onTapDown: (details) {
+//                                   setState(() {
+//                                     userTapPosX = details.globalPosition.dx;
+//                                     userTapPosY = details.globalPosition.dy;
+//                                   });
+//                                 },
+//                                 onLongPress: () {
+//                                   showPopUpMenu(
+//                                       context,
+//                                       playlistFolder[index].id,
+//                                       userTapPosX,
+//                                       userTapPosY);
+//                                 },
+//                                 onTap: () {
+//                                   selectedPlaylistFolderIndex = index;
+//                                   Navigator.of(context)
+//                                       .push(MaterialPageRoute(builder: (ctx) {
+//                                     return const PlaylistVideos();
+//                                   }));
+//                                 },
+//                                 child: ListTile(
+//                                   leading: const Padding(
+//                                     padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+//                                     child: Image(
+//                                         image: AssetImage(
+//                                             "assets/playlist_thumbnail_icon.png")),
+//                                   ),
+//                                   title: Text(
+//                                     truncateWithEllipsis(
+//                                         25, playlistFolder[index].playlistName),
+//                                   ),
+//                                 ),
+//                               );
+//                             },
+//                             itemCount: playlistFolder.length,
+//                             separatorBuilder:
+//                                 (BuildContext context, int index) =>
+//                                     const Divider(thickness: 1)),
+//                       );
+//               })
