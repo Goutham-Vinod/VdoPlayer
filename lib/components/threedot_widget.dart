@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:vdo_player/common.dart';
+import 'package:vdo_player/components/show_snack_bar.dart';
 import 'package:vdo_player/db/db_functions.dart';
 import 'package:vdo_player/db/db_model.dart';
 import 'package:vdo_player/components/create_playlist_dialogue.dart';
@@ -28,7 +29,7 @@ class ThreeDot extends StatelessWidget {
         List<PopupMenuItem<String>> popupMenuItemList = [
           PopupMenuItem(value: "Favourite", child: Text("Add to Favourite")),
           PopupMenuItem(value: "Playlist", child: Text("Add to Playlist")),
-          PopupMenuItem(value: "Share", child: Text("Share"))
+          // PopupMenuItem(value: "Share", child: Text("Share"))
         ];
         if (enableDelete == true) {
           popupMenuItemList
@@ -43,11 +44,11 @@ class ThreeDot extends StatelessWidget {
               if (videoPath != null) {
                 addToPlaylist(videoPath!, 0);
               }
+              showSnackBar(context, "Video Added to favourites");
               break;
             case "Playlist":
-              //debugPrint("Playlist Selected");
-              //selectedNaviBarIndexNotifierGlobal.value = 2;
               showAddToPlaylistBox(context);
+
               break;
             case "Delete":
               if (deleteFunction != null) {
@@ -114,10 +115,8 @@ class ThreeDot extends StatelessWidget {
                                 if (videoPath != null) {
                                   addToPlaylist(videoPath!, i);
                                 }
-                                print("${playlistFolder[i].id} added");
-                              } else {
-                                print(
-                                    "Null detected at playlistFolderNotifier.value[i].id");
+                                showSnackBar(context,
+                                    "Video added to ${playlistFolder[i].playlistName} ");
                               }
                               Navigator.pop(context);
                             },

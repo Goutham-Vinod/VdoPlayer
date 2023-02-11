@@ -33,7 +33,7 @@ class _FolderVideosState extends State<FolderVideos> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Folder videos"),
+          title: Text("${findFolderName(selectedFolderPath)}"),
           actions: [
             IconButton(
                 onPressed: () {

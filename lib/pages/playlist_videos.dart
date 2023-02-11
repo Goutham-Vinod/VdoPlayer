@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vdo_player/components/grid_list_view_videos_widget.dart';
 import 'package:vdo_player/common.dart';
+import 'package:vdo_player/components/show_snack_bar.dart';
 import 'package:vdo_player/db/db_functions.dart';
 import 'package:vdo_player/video_preview.dart';
 
@@ -16,7 +17,8 @@ class _PlaylistVideosState extends State<PlaylistVideos> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Playlist Videos"),
+          title: Text(
+              "${playlistFolderNotifier.value[selectedPlaylistFolderIndex].playlistName}"),
           actions: [
             IconButton(
                 onPressed: () {
@@ -57,6 +59,9 @@ class _PlaylistVideosState extends State<PlaylistVideos> {
                         ?.removeAt(index);
                     updatePlaylist(playlistFolderNotifier
                         .value[selectedPlaylistFolderIndex]);
+
+                    showSnackBar(context,
+                        "Video Deleted from ${playlistFolder[selectedPlaylistFolderIndex].playlistName} Playlist");
                   },
                 );
               } else {

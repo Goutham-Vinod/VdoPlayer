@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 showSnackBar(context, String message) {
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    duration: Duration(seconds: 1),
     backgroundColor: const Color.fromARGB(255, 95, 24, 108),
     elevation: 6.0,
     behavior: SnackBarBehavior.floating,
